@@ -1,0 +1,16 @@
+<div>
+        <h6>Title: </h6>{{ title }}
+        <h6>Start Date: </h6>{{ start }}
+        <h6>End Date: </h6>{{ end }}
+</div><br>
+
+<div class ="calendar" *ngIf="calendarOptions">
+    <button (click) = "add()" class = "btn btn-primary" style="margin-left: 80.3%;">Add Event</button>
+    <br><br>
+    <ng-fullcalendar #ucCalendar [options]="calendarOptions" (eventClick)="eventClick($event.detail)" (eventDrop)="updateEvent($event.detail)"
+        (eventResize)="updateEvent($event.detail)" (dayClick)="dayClick($event.detail)" (clickButton)="clickButton($event.detail)" [(eventsModel)]="events"></ng-fullcalendar>
+    <div *ngIf = "modify">    
+        <button (click) = "update()" class = "btn btn-link">Update</button>
+        <button (click) = "delete()" class = "btn btn-link">Delete</button>
+    </div>
+</div>
